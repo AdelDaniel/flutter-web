@@ -2,30 +2,35 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:web_app/constants/constants.dart';
 import 'package:web_app/extensions/color_extension.dart';
+import 'package:web_app/widgets/animations/translate_on_hover.dart';
 
 class SimpleBarChart extends StatelessWidget {
-
   const SimpleBarChart({super.key, this.animate = false});
   final bool animate;
 
   @override
   Widget build(BuildContext context) {
-    return Column(mainAxisSize: MainAxisSize.min, children: [
-      ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 250, maxWidth: 400),
-        child: BarChart(
-          BarChartData(
-            barTouchData: barTouchData,
-            titlesData: titlesData,
-            borderData: borderData,
-            barGroups: barGroups,
-            gridData: const FlGridData(show: false),
-            alignment: BarChartAlignment.spaceAround,
-            maxY: 20,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        TranslateOnHover(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxHeight: 250, maxWidth: 400),
+            child: BarChart(
+              BarChartData(
+                barTouchData: barTouchData,
+                titlesData: titlesData,
+                borderData: borderData,
+                barGroups: barGroups,
+                gridData: const FlGridData(show: false),
+                alignment: BarChartAlignment.spaceAround,
+                maxY: 20,
+              ),
+            ),
           ),
         ),
-      ),
-    ],);
+      ],
+    );
   }
 
   BarTouchData get barTouchData => BarTouchData(
@@ -92,15 +97,9 @@ class SimpleBarChart extends StatelessWidget {
             getTitlesWidget: getTitles,
           ),
         ),
-        leftTitles: const AxisTitles(
-          
-        ),
-        topTitles: const AxisTitles(
-          
-        ),
-        rightTitles: const AxisTitles(
-          
-        ),
+        leftTitles: const AxisTitles(),
+        topTitles: const AxisTitles(),
+        rightTitles: const AxisTitles(),
       );
 
   FlBorderData get borderData => FlBorderData(
