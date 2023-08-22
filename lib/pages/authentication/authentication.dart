@@ -5,6 +5,7 @@ import 'package:web_app/extensions/extensions.dart';
 import 'package:web_app/widgets/custom_text.dart';
 
 class AuthenticationPage extends StatelessWidget {
+  /// Authentication Page Constructor
   const AuthenticationPage({super.key});
   @override
   Widget build(BuildContext context) {
