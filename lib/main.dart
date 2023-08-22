@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:web_app/app.dart';
 import 'package:web_app/config/controller/language_controller.dart';
+import 'package:web_app/config/router/local_navigation_service.dart';
 import 'package:web_app/controllers/app_menu_controller.dart';
 
 void main() {
@@ -26,5 +27,6 @@ void _googleFontsLicense() {
 void _getLazyPut() {
   Get
     ..lazyPut(LanguageController.new)
-    ..lazyPut(AppMenuController.new);
+    ..lazyPut(AppMenuController.new)
+    ..lazyPut(() => LocalNavigationService(GlobalKey<NavigatorState>()));
 }

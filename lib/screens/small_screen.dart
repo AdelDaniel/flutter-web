@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_app/config/router/app_routing.dart';
+import 'package:web_app/constants/constants.dart';
 
 /// Small Screen For mobile
 class SmallScreen extends StatelessWidget {
@@ -7,6 +8,6 @@ class SmallScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return localNavigator;
+    return Controllers.localNavigationService.localNavigator;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_app/config/router/app_routing.dart';
+import 'package:web_app/constants/constants.dart';
 import 'package:web_app/widgets/side_menu/side_menu.dart';
 
 /// Large Screen For the Web
@@ -15,8 +16,9 @@ class LargeScreen extends StatelessWidget {
         Expanded(
           flex: 5,
           child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              child: localNavigator,),
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            child: Controllers.localNavigationService.localNavigator,
+          ),
         )
       ],
     );

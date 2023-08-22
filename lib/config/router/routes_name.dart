@@ -17,4 +17,6 @@ abstract final class RoutesName {
   static const String siteLayoutPageRoute = '/site-layout';
 
   static const String notificationsPageRoute = '/notifications';
+
+  static const String pageNotFound = '/page-not-found';
 }

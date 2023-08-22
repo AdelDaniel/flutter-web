@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_app/config/lang/lang_keys.dart';
@@ -66,8 +65,8 @@ class SideMenu extends StatelessWidget {
                       if (!_menuController.isActive(item)) {
                         _menuController.activateItem = item;
 
-                        AppKeys.localAppNavigatorKey.currentState
-                            ?.pushNamed(item.pageRoute);
+                        Controllers.localNavigationService
+                            .pushNamed(item.pageRoute);
 
                         if (context.isSmallScreen) {
                           // Navigator.of(context).pop();

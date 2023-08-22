@@ -8,9 +8,6 @@ abstract final class AppKeys {
   static final GlobalKey<ScaffoldState> siteLayout = GlobalKey<ScaffoldState>();
 
   /// Global key of navigation
-  static final GlobalKey<NavigatorState> localAppNavigatorKey =
-      GlobalKey<NavigatorState>();
-
   static final GlobalKey<NavigatorState> appNavigatorKey =
       GlobalKey<NavigatorState>();
 }
