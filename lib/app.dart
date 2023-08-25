@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:web_app/config/go_router/go_router_config.dart';
 import 'package:web_app/config/lang/models/l10n.dart';
-import 'package:web_app/config/router/app_routing.dart';
 import 'package:web_app/constants/constants.dart';
 
 /// The route widget Of the app
@@ -14,7 +13,7 @@ class App extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp.router(
       title: AppStrings.appName,
       builder: (context, widget) => ResponsiveBreakpoints.builder(
         child: widget!,
@@ -32,13 +31,10 @@ class App extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       locale: Controllers.languageController.locale,
-      fallbackLocale: Controllers.languageController.locale,
       supportedLocales: L10n.supportedLocales,
       localizationsDelegates: L10n.localizationsDelegates,
       localeResolutionCallback: L10n.localeResolutionCallback,
-      initialRoute: appGlobalNavigator.initialRoute,
-      onGenerateRoute: appGlobalNavigator.onGenerateRoute,
-      navigatorKey: AppKeys.appNavigatorKey,
+      routerConfig: GoRouterConfig.mainRouter,
     );
   }
 }

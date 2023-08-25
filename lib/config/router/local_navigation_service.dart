@@ -72,7 +72,7 @@ class LocalNavigationService {
   }
 }
 
-class _FadeRoute extends PageRouteBuilder {
+class _FadeRoute<T> extends PageRouteBuilder<T> {
   _FadeRoute({required this.name, required this.child})
       : super(
           settings: RouteSettings(

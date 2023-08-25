@@ -48,6 +48,9 @@ dependencies:
   # Table
   data_table_2: ^2.5.6
 
+  # Navigation
+  go_router: ^10.1.0
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2

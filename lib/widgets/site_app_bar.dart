@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:web_app/config/lang/lang_keys.dart';
 import 'package:web_app/config/router/routes_name.dart';
 import 'package:web_app/constants/constants.dart';
@@ -49,17 +50,16 @@ class SiteAppBar extends StatelessWidget implements PreferredSizeWidget {
           const SizedBox(width: 8),
           Obx(
             () => CustomText(
-              context.translate(Controllers
-                  .appMenuController.activateItem.displayLangKeyName,),
+              context.translate(
+                Controllers.appMenuController.activateItem.displayLangKeyName,
+              ),
             ),
           ),
           const Spacer(),
           IconButton(
             icon: const Icon(Icons.settings, color: AppColors.dark),
             onPressed: () {
-              Navigator.of(context).pushNamed(
-                RoutesName.notificationsPageRoute,
-              );
+              context.goNamed(RoutesName.notificationsPageRoute);
             },
           ),
           IconButton(
