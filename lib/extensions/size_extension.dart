@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:web_app/constants/screen_size_type.dart';
 import 'package:web_app/constants/screen_sizes.dart';
 
 /// extension to get [_height] and [_width]
@@ -14,29 +15,53 @@ extension SizeExtension on BuildContext {
   /// screen height
   double get _height => MediaQuery.of(this).size.height;
 
-  /// check if the isSmallScreen: width < ScreenSizes.mediumScreenSize
-  bool get isSmallScreen {
-    return _width < ScreenSizes.mediumScreenSize;
+  /// check if the isPhoneSize:
+  /// width < [ScreenSizes.maxSmallScreenSize]
+  bool get isPhoneSize {
+    return _width < ScreenSizes.maxSmallScreenSize;
   }
 
-  /// check if the isMediumScreen:
-  /// - width >= ScreenSizes.mediumScreenSize
-  /// - width < ScreenSizes.largeScreenSize
-  bool get isMediumScreen {
-    return _width >= ScreenSizes.mediumScreenSize &&
-        _width < ScreenSizes.largeScreenSize;
+  /// small screens are phones
+  // bool get isPhone => isPhoneSize;
+
+  /// check if the isTabletSize:
+  /// - width >= [ScreenSizes.maxMediumScreenSize]
+  /// - width < [ScreenSizes.maxLargeScreenSize]
+  bool get isTabletSize {
+    return _width >= ScreenSizes.maxSmallScreenSize &&
+        _width < ScreenSizes.maxMediumScreenSize;
   }
 
-  /// check if the isLargeScreen: width > ScreenSizes.largeScreenSize
-  bool get isLargeScreen {
-    return _width > ScreenSizes.largeScreenSize;
+  /// medium screens are tablets
+  // bool get isTablet => isTabletSize;
+
+  /// check if the isWebSize:
+  /// - width >= [ScreenSizes.maxMediumScreenSize]
+  /// - width < [ScreenSizes.maxLargeScreenSize]
+  bool get isWebSize {
+    return _width >= ScreenSizes.maxMediumScreenSize &&
+        _width < ScreenSizes.maxLargeScreenSize;
   }
 
-  /// check if the isCustomSize:
-  /// - width <= ScreenSizes.customScreenSize &&
-  /// - width >= ScreenSizes.mediumScreenSize;
-  bool get isCustomSize {
-    return _width <= ScreenSizes.customScreenSize &&
-        _width >= ScreenSizes.mediumScreenSize;
+  /// custom Size is web
+  // bool get isWeb => isWebSize;
+
+  /// check if the isLargeSize:
+  /// - width >= [ScreenSizes.maxLargeScreenSize] ;
+  bool get isLargeSize {
+    return _width >= ScreenSizes.maxLargeScreenSize;
+  }
+
+  ///
+  ScreenSizeType get screenSizeType {
+    if (isPhoneSize) {
+      return ScreenSizeType.phone;
+    } else if (isTabletSize) {
+      return ScreenSizeType.tablet;
+    } else if (isWebSize) {
+      return ScreenSizeType.web;
+    } else {
+      return ScreenSizeType.large;
+    }
   }
 }

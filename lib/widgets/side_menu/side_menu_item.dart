@@ -6,16 +6,17 @@ import 'package:web_app/widgets/side_menu/vertical_menu_item.dart';
 
 /// side menu
 class SideMenuItem extends StatelessWidget {
-
   const SideMenuItem({
-    required this.sideMenuItemType, required this.onTap, super.key,
+    required this.sideMenuItemType,
+    required this.onTap,
+    super.key,
   });
   final SideMenuItemType sideMenuItemType;
   final Function onTap;
 
   @override
   Widget build(BuildContext context) {
-    if (context.isCustomSize) {
+    if (context.isTabletSize) {
       return VerticalMenuItem(
         sideMenuItemType: sideMenuItemType,
         onTap: onTap,

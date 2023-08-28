@@ -20,9 +20,10 @@ class RevenueSectionSmall extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-              offset: const Offset(0, 6),
-              color: AppColors.lightGrey.withOpacity(.1),
-              blurRadius: 12,)
+            offset: const Offset(0, 6),
+            color: AppColors.lightGrey.withOpacity(.1),
+            blurRadius: 12,
+          )
         ],
         border: Border.all(color: AppColors.lightGrey, width: .5),
       ),

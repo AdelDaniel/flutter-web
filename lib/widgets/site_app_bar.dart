@@ -20,7 +20,7 @@ class SiteAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: !context.isSmallScreen
+      leading: !context.isPhoneSize
           ? const Row(
               children: [
                 Padding(
@@ -35,103 +35,106 @@ class SiteAppBar extends StatelessWidget implements PreferredSizeWidget {
                 siteLayoutKey.currentState?.openDrawer();
               },
             ),
-      title: Row(
-        children: [
-          Visibility(
-            visible: !context.isSmallScreen,
-            child: CustomText(
-              context.translate(LangKeys.welcome),
-              color: AppColors.lightGrey,
-              size: 20,
-              weight: FontWeight.bold,
-            ),
+      title: Row(children: [
+        Visibility(
+          visible: !context.isPhoneSize,
+          child: CustomText(
+            context.translate(LangKeys.welcome),
+            color: AppColors.lightGrey,
+            weight: FontWeight.bold,
           ),
+        ),
+        if (context.isPhoneSize)
+          const SizedBox.shrink()
+        else
           const SizedBox(width: 8),
-          Obx(
-            () => CustomText(
-              context.translate(Controllers
-                  .appMenuController.activateItem.displayLangKeyName,),
+        Obx(
+          () => CustomText(
+            context.translate(
+              Controllers.appMenuController.activateItem.displayLangKeyName,
             ),
           ),
-          const Spacer(),
-          IconButton(
-            icon: const Icon(Icons.settings, color: AppColors.dark),
-            onPressed: () {
-              Navigator.of(context).pushNamed(
-                RoutesName.notificationsPageRoute,
-              );
-            },
-          ),
-          IconButton(
-            icon: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(Controllers.languageController.otherLanguageName),
-                const Icon(Icons.language_rounded),
-              ],
-            ),
-            onPressed: Controllers.languageController.toggleLanguage,
-          ),
-          Stack(
+        ),
+        const Spacer(),
+      ]),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.settings, color: AppColors.dark),
+          onPressed: () {
+            Navigator.of(context).pushNamed(
+              RoutesName.notificationsPageRoute,
+            );
+          },
+        ),
+        IconButton(
+          icon: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              IconButton(
-                icon: Icon(
-                  Icons.notifications,
-                  color: AppColors.dark.withOpacity(.7),
-                ),
-                onPressed: () {},
-              ),
-              Positioned(
-                top: 7,
-                right: 7,
-                child: Container(
-                  width: 12,
-                  height: 12,
-                  padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    color: AppColors.active,
-                    borderRadius: BorderRadius.circular(30),
-                    border: Border.all(color: AppColors.light, width: 2),
-                  ),
-                ),
-              )
+              Text(Controllers.languageController.otherLanguageName),
+              const Icon(Icons.language_rounded),
             ],
           ),
-          Container(
-            width: 1,
-            height: 22,
-            color: AppColors.lightGrey,
-          ),
-          const SizedBox(width: 16),
-          if (!context.isSmallScreen)
-            CustomText(
-              context.translate(LangKeys.appName),
-              color: AppColors.lightGrey,
-            ),
-          const SizedBox(width: 16),
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.active.withOpacity(.5),
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.circular(30),
+          onPressed: Controllers.languageController.toggleLanguage,
+        ),
+        Stack(
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.notifications,
+                color: AppColors.dark.withOpacity(.7),
               ),
-              padding: const EdgeInsets.all(2),
-              margin: const EdgeInsets.all(2),
-              child: const CircleAvatar(
-                backgroundColor: AppColors.light,
-                child: Icon(
-                  Icons.person_outline,
-                  color: AppColors.dark,
+              onPressed: () {},
+            ),
+            Positioned(
+              top: 7,
+              right: 7,
+              child: Container(
+                width: 12,
+                height: 12,
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  color: AppColors.active,
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(color: AppColors.light, width: 2),
                 ),
               ),
+            )
+          ],
+        ),
+        Container(
+          width: 1,
+          height: 22,
+          color: AppColors.lightGrey,
+        ),
+        const SizedBox(width: 8),
+        if (!context.isPhoneSize)
+          CustomText(
+            context.translate(LangKeys.appName),
+            color: AppColors.lightGrey,
+          ),
+        if (!context.isPhoneSize) const SizedBox(width: 16),
+        Container(
+          decoration: BoxDecoration(
+            color: AppColors.active.withOpacity(.5),
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(30),
             ),
-          )
-        ],
-      ),
+            padding: const EdgeInsets.all(2),
+            margin: const EdgeInsets.all(2),
+            child: const CircleAvatar(
+              backgroundColor: AppColors.light,
+              child: Icon(
+                Icons.person_outline,
+                color: AppColors.dark,
+              ),
+            ),
+          ),
+        )
+      ],
       iconTheme: const IconThemeData(color: AppColors.dark),
       elevation: 0,
       backgroundColor: AppColors.transparent,

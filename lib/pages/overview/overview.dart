@@ -23,26 +23,25 @@ class OverviewPage extends StatelessWidget {
         Row(
           children: [
             Container(
-                margin: EdgeInsets.only(top: context.isSmallScreen ? 56 : 6),
-                child: CustomText(
-                  context
-                      .translate(SideMenuItemType.overview.displayLangKeyName),
-                  size: 24,
-                  weight: FontWeight.bold,
-                ),),
+              margin: EdgeInsets.only(top: context.isPhoneSize ? 56 : 6),
+              child: CustomText(
+                context.translate(SideMenuItemType.overview.displayLangKeyName),
+                size: 24,
+                weight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
         Expanded(
           child: ListView(
             children: [
-              if (context.isLargeScreen || context.isMediumScreen)
-                if (context.isCustomSize)
-                  const OverviewCardsMediumScreen()
-                else
-                  const OverviewCardsLargeScreen()
-              else
+              if (context.isTabletSize)
+                const OverviewCardsMediumScreen()
+              else if (context.isLargeSize || context.isWebSize)
+                const OverviewCardsLargeScreen()
+              else if (context.isPhoneSize)
                 const OverviewCardsSmallScreen(),
-              if (!context.isSmallScreen)
+              if (!context.isPhoneSize)
                 const RevenueSectionLarge()
               else
                 const RevenueSectionSmall(),

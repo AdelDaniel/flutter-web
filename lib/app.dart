@@ -17,13 +17,14 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       title: AppStrings.appName,
       builder: (context, widget) => ResponsiveBreakpoints.builder(
-        child: widget!,
+        child: BouncingScrollWrapper.builder(context, widget!),
         breakpoints: [
           const Breakpoint(start: 0, end: 450, name: MOBILE),
           const Breakpoint(start: 451, end: 800, name: TABLET),
           const Breakpoint(start: 801, end: 1920, name: DESKTOP),
           const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
         ],
+        debugLog: true,
       ),
       theme: ThemeData(
         textTheme: GoogleFonts.notoSansArabicTextTheme(),

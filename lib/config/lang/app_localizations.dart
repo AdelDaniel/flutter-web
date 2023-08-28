@@ -39,9 +39,9 @@ class AppLocalizations {
 
   /// Loading the file that contains translation
   Future<bool> load() async {
-    // Load the language JSON file from the "lang" folder
-    final jsonString =
-        await rootBundle.loadString('languages/${locale.languageCode}.json');
+    /// Load the language JSON file from the "lang" folder
+    final jsonString = await rootBundle
+        .loadString('assets/languages/${locale.languageCode}.json');
 
     // decode the json form the lang file.
     // mapping the json string that we loaded from the file to json map

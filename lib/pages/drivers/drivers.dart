@@ -17,7 +17,7 @@ class DriversPage extends StatelessWidget {
         Row(
           children: [
             Container(
-              margin: EdgeInsets.only(top: context.isSmallScreen ? 56 : 6),
+              margin: EdgeInsets.only(top: context.isPhoneSize ? 56 : 6),
               child: CustomText(
                 context.translate(
                   SideMenuItemType.drivers.displayLangKeyName,

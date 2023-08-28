@@ -17,7 +17,7 @@ class SiteLayout extends StatelessWidget {
       key: AppKeys.siteLayout,
       drawer: const Drawer(child: SideMenu()),
       appBar: SiteAppBar(siteLayoutKey: AppKeys.siteLayout),
-      body: context.isSmallScreen ? const SmallScreen() : const LargeScreen(),
+      body: context.isPhoneSize ? const SmallScreen() : const LargeScreen(),
     );
   }
 }

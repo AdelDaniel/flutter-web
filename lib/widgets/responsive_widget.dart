@@ -11,13 +11,13 @@ class ResponsiveWidget extends StatelessWidget {
     this.customScreen,
   });
 
-  ///largeScreen
+  /// largeScreen
   final Widget largeScreen;
 
-  ///mediumScreen
+  /// mediumScreen
   final Widget? mediumScreen;
 
-  ///smallScreen
+  /// smallScreen
   final Widget? smallScreen;
 
   /// the custom screen size is specific to this project
@@ -27,10 +27,14 @@ class ResponsiveWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth >= ScreenSizes.largeScreenSize) {
-          return largeScreen;
-        } else if (constraints.maxWidth < ScreenSizes.largeScreenSize &&
-            constraints.maxWidth >= ScreenSizes.mediumScreenSize) {
+        final maxWidth = constraints.maxWidth;
+        if (maxWidth < _maxSmallScreenSize) {
+          return smallScreen ?? mediumScreen ?? largeScreen;
+        } else if (maxWidth > _maxSmallScreenSize &&
+            maxWidth < _maxMediumScreenSize) {
+          return mediumScreen ?? smallScreen ?? largeScreen;
+        } else if (maxWidth >= _maxMediumScreenSize &&
+            maxWidth < _maxLargeScreenSize) {
           return mediumScreen ?? largeScreen;
         } else {
           return smallScreen ?? largeScreen;
@@ -38,4 +42,8 @@ class ResponsiveWidget extends StatelessWidget {
       },
     );
   }
+
+  static int get _maxSmallScreenSize => ScreenSizes.maxSmallScreenSize;
+  static int get _maxMediumScreenSize => ScreenSizes.maxMediumScreenSize;
+  static int get _maxLargeScreenSize => ScreenSizes.maxLargeScreenSize;
 }

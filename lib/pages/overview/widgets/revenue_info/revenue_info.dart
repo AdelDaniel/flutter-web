@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:web_app/constants/constants.dart';
 
 class RevenueInfo extends StatelessWidget {
-
   const RevenueInfo({super.key, this.title, this.amount});
   final String? title;
   final String? amount;

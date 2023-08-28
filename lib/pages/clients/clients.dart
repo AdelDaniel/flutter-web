@@ -16,13 +16,14 @@ class ClientsPage extends StatelessWidget {
           Row(
             children: [
               Container(
-                  margin: EdgeInsets.only(top: context.isSmallScreen ? 56 : 6),
-                  child: CustomText(
-                    context
-                        .translate(SideMenuItemType.clients.displayLangKeyName),
-                    size: 24,
-                    weight: FontWeight.bold,
-                  ),),
+                margin: EdgeInsets.only(top: context.isPhoneSize ? 56 : 6),
+                child: CustomText(
+                  context
+                      .translate(SideMenuItemType.clients.displayLangKeyName),
+                  size: 24,
+                  weight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
           const Expanded(
@@ -50,69 +51,78 @@ class Clientstable extends StatelessWidget {
         border: Border.all(color: AppColors.active.withOpacity(.4), width: .5),
         boxShadow: [
           BoxShadow(
-              offset: const Offset(0, 6),
-              color: AppColors.lightGrey.withOpacity(.1),
-              blurRadius: 12,)
+            offset: const Offset(0, 6),
+            color: AppColors.lightGrey.withOpacity(.1),
+            blurRadius: 12,
+          )
         ],
         borderRadius: BorderRadius.circular(8),
       ),
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.only(bottom: 30),
       child: DataTable2(
-          columnSpacing: 12,
-          horizontalMargin: 12,
-          minWidth: 600,
-          columns: const [
-            DataColumn2(
-              label: Text('Name'),
-              size: ColumnSize.L,
-            ),
-            DataColumn(
-              label: Text('Location'),
-            ),
-            DataColumn(
-              label: Text('Rating'),
-            ),
-            DataColumn(
-              label: Text('Action'),
-            ),
-          ],
-          rows: List<DataRow>.generate(
-              15,
-              (index) => DataRow(cells: [
-                    const DataCell(CustomText('Santos Enoque')),
-                    const DataCell(CustomText('New yourk city')),
-                    const DataCell(Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: Colors.deepOrange,
-                          size: 18,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        CustomText(
-                          '4.5',
-                        )
-                      ],
-                    ),),
-                    DataCell(Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.light,
-                          borderRadius: BorderRadius.circular(20),
-                          border:
-                              Border.all(color: AppColors.active, width: .5),
-                        ),
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                        child: CustomText(
-                          'Block',
-                          color: AppColors.active.withOpacity(.7),
-                          weight: FontWeight.bold,
-                        ),),),
-                  ],),),),
+        columnSpacing: 12,
+        horizontalMargin: 12,
+        minWidth: 600,
+        columns: const [
+          DataColumn2(
+            label: Text('Name'),
+            size: ColumnSize.L,
+          ),
+          DataColumn(
+            label: Text('Location'),
+          ),
+          DataColumn(
+            label: Text('Rating'),
+          ),
+          DataColumn(
+            label: Text('Action'),
+          ),
+        ],
+        rows: List<DataRow>.generate(
+          15,
+          (index) => DataRow(
+            cells: [
+              const DataCell(CustomText('Santos Enoque')),
+              const DataCell(CustomText('New yourk city')),
+              const DataCell(
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.star,
+                      color: Colors.deepOrange,
+                      size: 18,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    CustomText(
+                      '4.5',
+                    )
+                  ],
+                ),
+              ),
+              DataCell(
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.light,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: AppColors.active, width: .5),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  child: CustomText(
+                    'Block',
+                    color: AppColors.active.withOpacity(.7),
+                    weight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

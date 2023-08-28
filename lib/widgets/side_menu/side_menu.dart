@@ -19,7 +19,7 @@ class SideMenu extends StatelessWidget {
       color: AppColors.light,
       child: ListView(
         children: [
-          if (context.isSmallScreen)
+          if (context.isPhoneSize)
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -68,7 +68,7 @@ class SideMenu extends StatelessWidget {
                         Controllers.localNavigationService
                             .pushNamed(item.pageRoute);
 
-                        if (context.isSmallScreen) {
+                        if (context.isPhoneSize) {
                           // Navigator.of(context).pop();
                           AppKeys.siteLayout.currentState?.closeDrawer();
                         }
